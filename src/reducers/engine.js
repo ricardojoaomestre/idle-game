@@ -1,22 +1,39 @@
-import { UPDATE_SPEED } from "../constants";
+import {
+  calculateIncome,
+  calculateIncrement,
+  calculateUpgradeCost,
+} from "../helpers/calculations";
 
 export const tick = (state, action) => {
-  const { generator, ticks } = state;
-
   switch (action.type) {
     case "increment":
       return {
         ...state,
-        ticks: ticks + generator.factor / (1000 / UPDATE_SPEED),
+        ticks: state.ticks + calculateIncrement(state.generator.income),
       };
     case "upgrade":
-      const updLevel = generator.level + 1;
-      const updFactor = generator.factor + 1;
-      const updTicks = ticks - 10;
+      const { ticks, generator } = state;
+      const { upgradeCost, level, startingCost, costFactor, baseIncome } =
+        generator;
+      let cost = upgradeCost;
+      let nextLevel = level + 1;
+      if (action.payload && action.payload > level) {
+        cost = calculateUpgradeCost(startingCost, costFactor, action.payload);
+        nextLevel = action.payload;
+      }
       return {
         ...state,
-        ticks: updTicks,
-        generator: { level: updLevel, factor: updFactor },
+        ticks: ticks - cost,
+        generator: {
+          ...state.generator,
+          level: nextLevel,
+          upgradeCost: calculateUpgradeCost(
+            startingCost,
+            costFactor,
+            nextLevel
+          ),
+          income: calculateIncome(baseIncome, nextLevel),
+        },
       };
     default:
       throw new Error("Action not available");

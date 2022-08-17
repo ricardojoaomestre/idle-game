@@ -1,13 +1,12 @@
 import React from "react";
-
-const DisplayGenerator = ({ info, onUpgrade }) => {
-  const { level, factor } = info;
+import { number } from "../helpers/format";
+const DisplayGenerator = ({ info }) => {
+  const { level, income } = info;
 
   return (
     <div>
       <p>Level: {level}</p>
-      <p>Factor: {factor}</p>
-      <button onClick={onUpgrade}>Upgrade</button>
+      <p>Income: {number(income)}/s</p>
     </div>
   );
 };

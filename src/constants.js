@@ -1,1 +1,1 @@
-export const UPDATE_SPEED = 100; // ms
+export const UPDATE_SPEED = 1000; // ms
