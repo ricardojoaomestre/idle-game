@@ -1,7 +1,10 @@
 import React from "react";
 import { float } from "../helpers/format";
+import useGameContext from "../hooks/useGameContext";
 
-const DisplayData = ({ ticks }) => {
+const DisplayData = () => {
+  const [state] = useGameContext();
+  const { ticks } = state;
   return (
     <div>
       <p>Ticks: {float(ticks)}</p>

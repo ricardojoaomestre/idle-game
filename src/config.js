@@ -1,6 +1,7 @@
 export const initialState = {
-  ticks: 0,
-  generator: {
+  ticks: 5,
+  generators: [],
+  /*{
     baseIncome: 1.67,
     startingCost: 3.738,
     costFactor: 1.07,
@@ -9,7 +10,21 @@ export const initialState = {
     upgradeCost: 4.28,
     bonusFactor: 1,
   },
+  */
 };
+
+export const generatorMarket = [
+  {
+    baseIncome: 1.67,
+    startingCost: 3.738,
+    costFactor: 1.07,
+  },
+  {
+    baseIncome: 20,
+    startingCost: 60,
+    costFactor: 1.15,
+  },
+];
 
 export const bonus = {
   1: 1,
@@ -23,3 +38,11 @@ export const bonus = {
   600: 16,
   1000: 32,
 };
+
+const config = {
+  ...initialState,
+  bonus,
+  generatorMarket,
+};
+
+export default config;

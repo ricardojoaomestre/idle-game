@@ -1,10 +1,10 @@
 import Engine from "./components/Engine";
 import { GameContextProvider } from "./context/gameContext";
 import { tick } from "./reducers/engine";
-import { initialState, bonus } from "./config";
+import config from "./config";
 
 const App = () => (
-  <GameContextProvider reducer={tick} initialState={{ ...initialState, bonus }}>
+  <GameContextProvider reducer={tick} initialState={config}>
     <Engine />
   </GameContextProvider>
 );

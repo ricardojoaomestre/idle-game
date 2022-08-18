@@ -11,6 +11,7 @@ const Engine = () => {
       dispatch({ type: "increment" });
     }, UPDATE_SPEED);
     return () => clearInterval(ticker);
+    // eslint-disable-next-line
   }, []);
 
   return (

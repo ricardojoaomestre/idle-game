@@ -16,7 +16,11 @@ export const calculateMaxUpgradeLevel = (
   return calculateMaxUpgradeLevel(startingCost, costFactor, level + 1, ticks);
 };
 
-export const calculateIncrement = (income) => income / (1000 / UPDATE_SPEED);
+export const calculateIncrement = (generators) =>
+  generators.reduce(
+    (acc, curr) => acc + curr.income / (1000 / UPDATE_SPEED),
+    0
+  );
 
 export const calculateBonusFactor = (level, bonus) => {
   const bonusLevels = Object.keys(bonus);
