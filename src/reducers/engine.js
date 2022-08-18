@@ -4,6 +4,7 @@ import {
   calculateIncrement,
   calculateUpgradeCost,
 } from "../helpers/calculations";
+import { load, save } from "../helpers/localStorage";
 
 function increment(state) {
   const increment = calculateIncrement(state.generators);
@@ -69,6 +70,15 @@ function buyGenerator(state) {
   };
 }
 
+function saveGame(state) {
+  save(state);
+  return state;
+}
+
+function loadGame() {
+  return load();
+}
+
 export const tick = (state, action) => {
   switch (action.type) {
     case "increment":
@@ -76,8 +86,11 @@ export const tick = (state, action) => {
     case "upgrade":
       return upgrade(state, action);
     case "buyGenerator":
-      console.log("action => buyGenerator");
       return buyGenerator(state);
+    case "saveGame":
+      return saveGame(state);
+    case "loadGame":
+      return loadGame();
     default:
       throw new Error("Action not available");
   }

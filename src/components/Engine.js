@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { UPDATE_SPEED } from "../constants";
+import { SAVE_LOOP, UPDATE_SPEED } from "../constants";
 import useGameContext from "../hooks/useGameContext";
 import Game from "./Game";
 
@@ -10,7 +10,16 @@ const Engine = () => {
     const ticker = setInterval(() => {
       dispatch({ type: "increment" });
     }, UPDATE_SPEED);
+
     return () => clearInterval(ticker);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const saviour = setInterval(() => {
+      dispatch({ type: "saveGame" });
+    }, SAVE_LOOP);
+    return () => clearInterval(saviour);
     // eslint-disable-next-line
   }, []);
 
