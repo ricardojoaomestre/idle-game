@@ -32,3 +32,15 @@ export const calculateBonusFactor = (level, bonus) => {
 
 export const calculateIncome = (baseIncome, level, bonusFactor) =>
   bonusFactor * baseIncome * level;
+
+export const calculateIdleIncome = (state) => {
+  const currentDate = +new Date();
+  const timePassed = currentDate - state.savedAt;
+  const ticksCount = timePassed / UPDATE_SPEED;
+  const totalCapacity = calculateIncrement(state.generators);
+
+  return {
+    ...state,
+    ticks: state.ticks + ticksCount * totalCapacity,
+  };
+};

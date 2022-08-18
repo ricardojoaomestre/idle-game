@@ -2,7 +2,11 @@ import { LOCAL_STORAGE_KEY } from "../constants";
 
 export const save = (data) => {
   if (!window.localStorage) return false;
-  window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+  const savingData = {
+    ...data,
+    savedAt: +new Date(),
+  };
+  window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savingData));
   return true;
 };
 

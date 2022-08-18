@@ -1,16 +1,6 @@
 export const initialState = {
   ticks: 5,
   generators: [],
-  /*{
-    baseIncome: 1.67,
-    startingCost: 3.738,
-    costFactor: 1.07,
-    level: 1,
-    income: 1.67,
-    upgradeCost: 4.28,
-    bonusFactor: 1,
-  },
-  */
 };
 
 export const generatorMarket = [
