@@ -1,5 +1,5 @@
 import React from "react";
-import { interger, float } from "../helpers/format";
+import { integer, float } from "../helpers/format";
 const DisplayGenerator = ({ info }) => {
   const { level, income, bonusFactor } = info;
 
@@ -7,7 +7,7 @@ const DisplayGenerator = ({ info }) => {
     <div>
       <p>Level: {level}</p>
       <p>Income: {float(income)}/s</p>
-      <p>Bonus: {interger(bonusFactor)}</p>
+      <p>Bonus: {integer(bonusFactor)}</p>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { interger } from "../helpers/format";
+import { float } from "../helpers/format";
 
 const UpgradeButton = ({ ticks, cost, nextLevel, onClick }) => {
   return (
     <button onClick={onClick} disabled={cost > ticks}>
-      Upgrade to Level {nextLevel} (cost: {interger(cost)})
+      Upgrade to Level {nextLevel} (cost: {float(cost)})
     </button>
   );
 };

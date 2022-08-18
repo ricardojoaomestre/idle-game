@@ -24,6 +24,21 @@ export const generatorMarket = [
     startingCost: 60,
     costFactor: 1.15,
   },
+  {
+    baseIncome: 90,
+    startingCost: 720,
+    costFactor: 1.14,
+  },
+  {
+    baseIncome: 360,
+    startingCost: 8640,
+    costFactor: 1.13,
+  },
+  {
+    baseIncome: 2160,
+    startingCost: 103680,
+    costFactor: 1.12,
+  },
 ];
 
 export const bonus = {

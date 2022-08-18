@@ -24,7 +24,7 @@ export const calculateIncrement = (generators) =>
 
 export const calculateBonusFactor = (level, bonus) => {
   const bonusLevels = Object.keys(bonus);
-  const nextMilestones = bonusLevels.filter((l) => l > level);
+  const nextMilestones = bonusLevels.filter((l) => l >= level);
   if (nextMilestones.length === 0)
     return bonus[bonusLevels[bonusLevels.length - 1]];
   return bonus[nextMilestones[0]];
