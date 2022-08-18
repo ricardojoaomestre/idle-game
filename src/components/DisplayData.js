@@ -1,10 +1,10 @@
 import React from "react";
-import { number } from "../helpers/format";
+import { float } from "../helpers/format";
 
 const DisplayData = ({ ticks }) => {
   return (
     <div>
-      <p>Ticks: {number(ticks)}</p>
+      <p>Ticks: {float(ticks)}</p>
     </div>
   );
 };
