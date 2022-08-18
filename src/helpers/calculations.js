@@ -18,4 +18,13 @@ export const calculateMaxUpgradeLevel = (
 
 export const calculateIncrement = (income) => income / (1000 / UPDATE_SPEED);
 
-export const calculateIncome = (baseIncome, level) => baseIncome * level;
+export const calculateBonusFactor = (level, bonus) => {
+  const bonusLevels = Object.keys(bonus);
+  const nextMilestones = bonusLevels.filter((l) => l > level);
+  if (nextMilestones.length === 0)
+    return bonus[bonusLevels[bonusLevels.length - 1]];
+  return bonus[nextMilestones[0]];
+};
+
+export const calculateIncome = (baseIncome, level, bonusFactor) =>
+  bonusFactor * baseIncome * level;

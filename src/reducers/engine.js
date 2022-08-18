@@ -1,4 +1,5 @@
 import {
+  calculateBonusFactor,
   calculateIncome,
   calculateIncrement,
   calculateUpgradeCost,
@@ -12,7 +13,7 @@ export const tick = (state, action) => {
         ticks: state.ticks + calculateIncrement(state.generator.income),
       };
     case "upgrade":
-      const { ticks, generator } = state;
+      const { ticks, generator, bonus } = state;
       const { upgradeCost, level, startingCost, costFactor, baseIncome } =
         generator;
       let cost = upgradeCost;
@@ -21,6 +22,7 @@ export const tick = (state, action) => {
         cost = calculateUpgradeCost(startingCost, costFactor, action.payload);
         nextLevel = action.payload;
       }
+      const nextBonusFactor = calculateBonusFactor(nextLevel, bonus);
       return {
         ...state,
         ticks: ticks - cost,
@@ -32,7 +34,13 @@ export const tick = (state, action) => {
             costFactor,
             nextLevel
           ),
-          income: calculateIncome(baseIncome, nextLevel),
+          bonusFactor: nextBonusFactor,
+          income: calculateIncome(
+            baseIncome,
+            nextLevel,
+            nextBonusFactor,
+            bonus
+          ),
         },
       };
     default:
