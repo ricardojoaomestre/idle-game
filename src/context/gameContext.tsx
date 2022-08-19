@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createContext, useReducer } from "react";
 
 export const GameContext = createContext();

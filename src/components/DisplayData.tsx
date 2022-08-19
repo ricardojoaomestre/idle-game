@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { float } from "../helpers/format";
 import useGameContext from "../hooks/useGameContext";

@@ -1,9 +1,11 @@
+// @ts-nocheck
 import {
   calculateBonusFactor,
   calculateIncome,
   calculateIncrement,
   calculateUpgradeCost,
 } from "../helpers/calculations";
+import { BONUS } from "../constants";
 import { load, save } from "../helpers/localStorage";
 
 function increment(state) {
@@ -16,7 +18,8 @@ function increment(state) {
 
 function upgrade(state, action) {
   // get all data
-  const { ticks, bonus } = state;
+  const { ticks } = state;
+
   const { generator, level, idx } = action.payload;
   const { upgradeCost, startingCost, costFactor, baseIncome } = generator;
 
@@ -26,8 +29,8 @@ function upgrade(state, action) {
       ? upgradeCost
       : calculateUpgradeCost(startingCost, costFactor, level);
   const nextLevel = level;
-  const nextBonusFactor = calculateBonusFactor(nextLevel, bonus);
-  const income = calculateIncome(baseIncome, nextLevel, nextBonusFactor, bonus);
+  const nextBonusFactor = calculateBonusFactor(nextLevel, BONUS);
+  const income = calculateIncome(baseIncome, nextLevel, nextBonusFactor, BONUS);
   const upgGenerator = {
     ...generator,
     level: nextLevel,
@@ -46,14 +49,14 @@ function upgrade(state, action) {
 }
 
 function buyGenerator(state) {
-  const { generators, generatorMarket, ticks, bonus } = state;
-  const nextGeneratorConfig = generatorMarket[generators?.length || 0];
+  const { generators, market, ticks } = state;
+  const nextGeneratorConfig = market[generators?.length || 0];
   const { startingCost, costFactor, baseIncome } = nextGeneratorConfig;
 
   const nextGeneratorCost = calculateUpgradeCost(startingCost, costFactor, 1);
   if (ticks < nextGeneratorCost) return;
 
-  const bonusFactor = calculateBonusFactor(1, bonus);
+  const bonusFactor = calculateBonusFactor(1, BONUS);
   nextGeneratorConfig.level = 1;
   nextGeneratorConfig.income = calculateIncome(baseIncome, 1, bonusFactor);
   nextGeneratorConfig.upgradeCost = calculateUpgradeCost(

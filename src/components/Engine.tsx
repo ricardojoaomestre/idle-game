@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from "react";
 import { SAVE_LOOP, UPDATE_SPEED } from "../constants";
 import useGameContext from "../hooks/useGameContext";

@@ -1,9 +1,4 @@
-export const initialState = {
-  ticks: 5,
-  generators: [],
-};
-
-export const generatorMarket = [
+export const market: GeneratorStats[] = [
   {
     baseIncome: 1.67,
     startingCost: 3.738,
@@ -31,23 +26,10 @@ export const generatorMarket = [
   },
 ];
 
-export const bonus = {
-  1: 1,
-  25: 2,
-  50: 4,
-  100: 6,
-  200: 8,
-  300: 10,
-  400: 12,
-  500: 14,
-  600: 16,
-  1000: 32,
-};
-
-const config = {
-  ...initialState,
-  bonus,
-  generatorMarket,
+const config: GameConfig = {
+  ticks: 5,
+  generators: [],
+  market,
 };
 
 export default config;

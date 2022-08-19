@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import useGameContext from "../hooks/useGameContext";
 import BuyGeneratorButton from "./BuyGeneratorButton";
@@ -7,14 +8,14 @@ import UpgradeButtonMax from "./UpgradeButtonMax";
 
 const GeneratorStack = () => {
   const [state, dispatch] = useGameContext();
-  const { ticks, generators, generatorMarket } = state;
+  const { ticks, generators, market } = state;
 
   return (
     <div>
       <BuyGeneratorButton
         ticks={ticks}
         nextGeneratorIndex={generators?.length}
-        market={generatorMarket}
+        market={market}
         onClick={() => dispatch({ type: "buyGenerator" })}
       />
       <hr />

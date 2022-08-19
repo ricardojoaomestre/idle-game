@@ -1,5 +1,6 @@
-export const integer = (value) => value.toFixed(0);
-export const float = (value) => {
+export const integer = (value: number): string => value.toFixed(0);
+
+export const float = (value: number): string => {
   const lookup = [
     { value: 1e3, symbol: "k" },
     { value: 1e6, symbol: "M" },

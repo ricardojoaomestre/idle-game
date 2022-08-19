@@ -1,3 +1,4 @@
+import React from "react";
 import Engine from "./components/Engine";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { GameContextProvider } from "./context/gameContext";
@@ -7,7 +8,7 @@ import { load } from "./helpers/localStorage";
 import { calculateIdleIncome } from "./helpers/calculations";
 
 const App = () => {
-  let initialState = load() || config;
+  let initialState: GameConfig = load() || config;
 
   if (initialState.savedAt) {
     initialState = calculateIdleIncome(initialState);

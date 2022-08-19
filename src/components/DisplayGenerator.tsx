@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { integer, float } from "../helpers/format";
 const DisplayGenerator = ({ info }) => {
