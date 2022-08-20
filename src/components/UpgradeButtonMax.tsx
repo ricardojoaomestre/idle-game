@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 import {
   calculateMaxUpgradeLevel,
@@ -6,15 +5,23 @@ import {
 } from "../helpers/calculations";
 import UpgradeButton from "./UpgradeButton";
 
-const UpgradeButtonMax = ({ ticks, generator, onClick }) => {
+const UpgradeButtonMax = ({
+  ticks,
+  generator,
+  onClick,
+}: {
+  ticks: number;
+  generator: GeneratorInfo;
+  onClick: (nextLevel: number) => void;
+}) => {
   const { startingCost, costFactor, level } = generator;
-  const nextLevel = calculateMaxUpgradeLevel(
+  const nextLevel: number = calculateMaxUpgradeLevel(
     startingCost,
     costFactor,
     level,
     ticks
   );
-  const cost =
+  const cost: number =
     nextLevel === level
       ? generator.upgradeCost
       : calculateUpgradeCost(startingCost, costFactor, nextLevel);

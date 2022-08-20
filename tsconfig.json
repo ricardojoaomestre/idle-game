@@ -16,6 +16,12 @@
     "incremental": true,
     "baseUrl": "./src"
   },
-  "include": ["src/docs/config.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "src/docs/config.d.ts",
+    "src/docs/types.d.ts",
+    "constants.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

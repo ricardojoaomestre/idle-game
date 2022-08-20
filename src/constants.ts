@@ -14,3 +14,10 @@ export const BONUS: BonusInfo[] = [
   { level: 600, bonus: 256 },
   { level: 1000, bonus: 512 },
 ];
+
+export const INCREMENT_ACTION = "increment";
+export const UPGRADE_ACTION = "upgrade";
+export const BUY_GENERATOR_ACTION = "buyGenerator";
+export const SAVE_GAME_ACTION = "saveGame";
+export const LOAD_GAME_ACTION = "loadGame";
+export const RESET_ACTION = "reset";

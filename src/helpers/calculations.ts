@@ -17,6 +17,7 @@ export const calculateMaxUpgradeLevel = (
     costFactor,
     level + 1
   );
+  console.log(cost, cost > ticks);
   if (cost > ticks) {
     return level;
   }

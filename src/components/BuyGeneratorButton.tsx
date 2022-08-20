@@ -1,14 +1,27 @@
-// @ts-nocheck
 import React from "react";
 import { calculateUpgradeCost } from "../helpers/calculations";
 import { integer } from "../helpers/format";
 
-const BuyGeneratorButton = ({ ticks, nextGeneratorIndex, market, onClick }) => {
+const BuyGeneratorButton = ({
+  ticks,
+  nextGeneratorIndex,
+  market,
+  onClick,
+}: {
+  ticks: number;
+  nextGeneratorIndex: number;
+  market: GeneratorStats[];
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}) => {
   if (market.length - 1 < nextGeneratorIndex) return null;
-  const nextGenerator = market[nextGeneratorIndex];
+  const nextGenerator: GeneratorStats = market[nextGeneratorIndex];
 
   const { startingCost, costFactor } = nextGenerator;
-  const nextGeneratorCost = calculateUpgradeCost(startingCost, costFactor, 1);
+  const nextGeneratorCost: number = calculateUpgradeCost(
+    startingCost,
+    costFactor,
+    1
+  );
 
   return (
     <div>

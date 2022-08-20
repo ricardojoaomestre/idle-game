@@ -1,9 +1,7 @@
 import { reset } from "helpers/localStorage";
 import React from "react";
 
-interface Props {}
-
-function ResetButton(props: Props) {
+function ResetButton() {
   const handleClick = () => {
     if (window.confirm("Are you sure you want to reset the game progress?")) {
       reset();

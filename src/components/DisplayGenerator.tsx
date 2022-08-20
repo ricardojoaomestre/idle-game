@@ -1,7 +1,6 @@
-// @ts-nocheck
 import React from "react";
 import { integer, float } from "../helpers/format";
-const DisplayGenerator = ({ info }) => {
+const DisplayGenerator = ({ info }: { info: GeneratorInfo }) => {
   const { level, income, bonusFactor } = info;
 
   return (

@@ -1,9 +1,8 @@
-// @ts-nocheck
 import React from "react";
 import { float } from "../helpers/format";
 import useGameContext from "../hooks/useGameContext";
 
-const DisplayData = () => {
+const DisplayData = (): React.ReactNode => {
   const [state] = useGameContext();
   const { ticks } = state;
   return (

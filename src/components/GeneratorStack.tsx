@@ -1,4 +1,4 @@
-// @ts-nocheck
+import { UPGRADE_ACTION, BUY_GENERATOR_ACTION } from "../constants";
 import React from "react";
 import useGameContext from "../hooks/useGameContext";
 import BuyGeneratorButton from "./BuyGeneratorButton";
@@ -16,7 +16,7 @@ const GeneratorStack = () => {
         ticks={ticks}
         nextGeneratorIndex={generators?.length}
         market={market}
-        onClick={() => dispatch({ type: "buyGenerator" })}
+        onClick={() => dispatch({ type: BUY_GENERATOR_ACTION })}
       />
       <hr />
       {generators.map((generator, idx) => (
@@ -28,7 +28,7 @@ const GeneratorStack = () => {
             nextLevel={generator.level + 1}
             onClick={() =>
               dispatch({
-                type: "upgrade",
+                type: UPGRADE_ACTION,
                 payload: { generator, idx, level: generator.level + 1 },
               })
             }
@@ -38,7 +38,7 @@ const GeneratorStack = () => {
             generator={generator}
             onClick={(level) =>
               dispatch({
-                type: "upgrade",
+                type: UPGRADE_ACTION,
                 payload: { generator, level, idx },
               })
             }
