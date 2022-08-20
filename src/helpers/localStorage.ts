@@ -1,4 +1,4 @@
-// @ts-nocheck
+import config from "config";
 import { LOCAL_STORAGE_KEY } from "../constants";
 
 export const save = (data: GameConfig): boolean => {
@@ -21,10 +21,10 @@ export const load = (): GameConfig | null => {
   return parsedData;
 };
 
-export const reset = (): boolean => {
-  if (!window.localStorage) return false;
+export const reset = (state): GameConfig => {
+  if (!window.localStorage) return state;
 
   window.localStorage.removeItem(LOCAL_STORAGE_KEY);
 
-  return true;
+  return config;
 };

@@ -9,10 +9,11 @@ import {
   BUY_GENERATOR_ACTION,
   INCREMENT_ACTION,
   LOAD_GAME_ACTION,
+  RESET_ACTION,
   SAVE_GAME_ACTION,
   UPGRADE_ACTION,
 } from "../constants";
-import { load, save } from "../helpers/localStorage";
+import { load, reset, save } from "../helpers/localStorage";
 
 function increment(state: GameConfig): GameConfig {
   const increment: number = calculateIncrement(state.generators);
@@ -107,6 +108,8 @@ export const tick = (state: GameConfig, action: ActionType): GameConfig => {
       return saveGame(state);
     case LOAD_GAME_ACTION:
       return loadGame();
+    case RESET_ACTION:
+      return reset(state);
     default:
       throw new Error("Action not available");
   }
