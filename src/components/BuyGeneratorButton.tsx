@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import React from "react";
 import { calculateUpgradeCost } from "../helpers/calculations";
 import { integer } from "../helpers/format";
@@ -24,11 +25,13 @@ const BuyGeneratorButton = ({
   );
 
   return (
-    <div>
-      <button disabled={ticks < nextGeneratorCost} onClick={onClick}>
-        Buy new Generator (cost: {integer(nextGeneratorCost)})
-      </button>
-    </div>
+    <Button
+      disabled={ticks < nextGeneratorCost}
+      onClick={onClick}
+      colorScheme={"messenger"}
+    >
+      Buy new Generator (cost: {integer(nextGeneratorCost)})
+    </Button>
   );
 };
 

@@ -32,6 +32,7 @@ const UpgradeButtonMax = ({
       cost={cost}
       nextLevel={nextLevel === level ? nextLevel + 1 : nextLevel}
       onClick={() => onClick(nextLevel)}
+      colorScheme={"telegram"}
     />
   );
 };

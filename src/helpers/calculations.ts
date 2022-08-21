@@ -34,7 +34,8 @@ export const calculateIncrement = (generators: GeneratorInfo[]): number =>
 export const calculateBonusFactor = (
   level: number,
   bonus: BonusInfo[]
-): number => bonus.filter((element) => element.level <= level)[0]?.bonus;
+): number =>
+  bonus.filter((element) => element.level <= level).reverse()[0]?.bonus;
 
 export const calculateIncome = (
   baseIncome: number,

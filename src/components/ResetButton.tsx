@@ -1,6 +1,7 @@
 import { RESET_ACTION } from "../constants";
 import useGameContext from "hooks/useGameContext";
 import React from "react";
+import { Button } from "@chakra-ui/react";
 
 function ResetButton() {
   const [, dispatch] = useGameContext();
@@ -10,7 +11,11 @@ function ResetButton() {
     }
   };
 
-  return <button onClick={handleClick}>Reset progress</button>;
+  return (
+    <Button onClick={handleClick} colorScheme={"red"}>
+      Reset progress
+    </Button>
+  );
 }
 
 export default ResetButton;

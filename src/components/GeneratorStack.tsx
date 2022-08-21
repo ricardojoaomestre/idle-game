@@ -5,6 +5,7 @@ import BuyGeneratorButton from "./BuyGeneratorButton";
 import DisplayGenerator from "./DisplayGenerator";
 import UpgradeButton from "./UpgradeButton";
 import UpgradeButtonMax from "./UpgradeButtonMax";
+import { Box, Divider, HStack } from "@chakra-ui/react";
 
 const GeneratorStack = () => {
   const [state, dispatch] = useGameContext();
@@ -18,32 +19,34 @@ const GeneratorStack = () => {
         market={market}
         onClick={() => dispatch({ type: BUY_GENERATOR_ACTION })}
       />
-      <hr />
+      <Divider my={4} />
       {generators.map((generator, idx) => (
-        <div key={idx}>
+        <Box width={"100%"} key={idx} mb={8}>
           <DisplayGenerator info={generator} />
-          <UpgradeButton
-            ticks={ticks}
-            cost={generator.upgradeCost}
-            nextLevel={generator.level + 1}
-            onClick={() =>
-              dispatch({
-                type: UPGRADE_ACTION,
-                payload: { generator, idx, level: generator.level + 1 },
-              })
-            }
-          />
-          <UpgradeButtonMax
-            ticks={ticks}
-            generator={generator}
-            onClick={(level) =>
-              dispatch({
-                type: UPGRADE_ACTION,
-                payload: { generator, level, idx },
-              })
-            }
-          />
-        </div>
+          <HStack width={"100%"} mt={12}>
+            <UpgradeButton
+              ticks={ticks}
+              cost={generator.upgradeCost}
+              nextLevel={generator.level + 1}
+              onClick={() =>
+                dispatch({
+                  type: UPGRADE_ACTION,
+                  payload: { generator, idx, level: generator.level + 1 },
+                })
+              }
+            />
+            <UpgradeButtonMax
+              ticks={ticks}
+              generator={generator}
+              onClick={(level) =>
+                dispatch({
+                  type: UPGRADE_ACTION,
+                  payload: { generator, level, idx },
+                })
+              }
+            />
+          </HStack>
+        </Box>
       ))}
     </div>
   );

@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import React from "react";
 import { float } from "../helpers/format";
 
@@ -6,16 +7,23 @@ const UpgradeButton = ({
   cost,
   nextLevel,
   onClick,
+  ...rest
 }: {
   ticks: number;
   cost: number;
   nextLevel: number;
   onClick: () => void;
+  colorScheme?: string;
 }) => {
   return (
-    <button onClick={onClick} disabled={cost > ticks}>
+    <Button
+      onClick={onClick}
+      disabled={cost > ticks}
+      colorScheme={"whatsapp"}
+      {...rest}
+    >
       Upgrade to Level {nextLevel} (cost: {float(cost)})
-    </button>
+    </Button>
   );
 };
 
